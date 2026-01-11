@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$LATE | Community Take Over - The People's Coin</title>
+    
+    <!-- SEO & Social Meta -->
+    <meta name="description" content="$LATE Token - 100% Community Owned. Developers left, the people took over. Join the revolution.">
+    <meta property="og:title" content="$LATE | Community Take Over">
+    <meta property="og:description" content="The coin that was abandoned. Now reborn by the community. Zero team, 100% community.">
+    <meta property="og:image" content="https://i.imgur.com/LATE-OG.png">
+    <meta property="og:url" content="https://latememe.fun">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <span class="logo-icon">⏰</span>
+                    <span class="logo-text">$LATE</span>
+                </div>
+                <span class="tagline">COMMUNITY TAKEOVER</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#generator" class="nav-link">Meme Generator</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#community" class="nav-link">Community</a>
+                <a href="#about" class="nav-link">Story</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="https://dexscreener.com/solana/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank" class="btn-chart">
+                    <i class="fas fa-chart-line"></i> Live Chart
+                </a>
+                <a href="https://join.pump.fun/HSag/kflbiotk" target="_blank" class="btn-buy pulse">
+                    <i class="fas fa-bolt"></i> BUY $LATE
+                </a>
+            </div>
+            
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-pulse">🚨 LIVE CTO</span>
+                <span class="badge-community">100% COMMUNITY OWNED</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="title-line">DEVELOPERS LEFT.</span>
+                <span class="title-line highlight">THE PEOPLE TOOK OVER.</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                $LATE is now a 100% community-driven project. No team allocations, 
+                no developer wallets, no central control. This is what true decentralization looks like.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-value" id="holdersCount">89</span>
+                        <span class="stat-label">Market Makers</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-value">1B</span>
+                        <span class="stat-label">Total Supply</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-value">0%</span>
+                        <span class="stat-label">Buy/Sell Tax</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-value">134</span>
+                        <span class="stat-label">Active Traders</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="https://join.pump.fun/HSag/kflbiotk" target="_blank" class="btn-primary btn-large">
+                    <i class="fas fa-rocket"></i> Buy on Pump.fun
+                </a>
+                <a href="https://t.me/communitylate" target="_blank" class="btn-secondary btn-large">
+                    <i class="fab fa-telegram"></i> Join Telegram
+                </a>
+                <a href="#generator" class="btn-outline btn-large">
+                    <i class="fas fa-robot"></i> Generate Meme
+                </a>
+            </div>
+            
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Meme Generator Section -->
+    <section class="section generator-section" id="generator">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">AI POWERED</span>
+                <h2 class="section-title">Create Your $LATE Meme</h2>
+                <p class="section-subtitle">
+                    Generate unique $LATE memes. Only LATE character appears in every creation.
+                </p>
+            </div>
+            
+            <div class="generator-container">
+                <div class="generator-preview">
+                    <div class="preview-container" id="memePreview">
+                        <div class="preview-placeholder">
+                            <i class="fas fa-image"></i>
+                            <p>Your $LATE meme will appear here</p>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-actions" id="memeActions" style="display: none;">
+                        <button class="action-btn btn-share" id="shareBtn">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                        <button class="action-btn btn-download" id="downloadBtn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="action-btn btn-regenerate" id="regenerateBtn">
+                            <i class="fas fa-redo"></i> Regenerate
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="generator-controls">
+                    <div class="control-group">
+                        <h3 class="control-title">Meme Style</h3>
+                        <div class="style-grid">
+                            <div class="style-option active" data-style="fomo">
+                                <i class="fas fa-running"></i>
+                                <span>FOMO</span>
+                            </div>
+                            <div class="style-option" data-style="moon">
+                                <i class="fas fa-moon"></i>
+                                <span>To The Moon</span>
+                            </div>
+                            <div class="style-option" data-style="diamond">
+                                <i class="fas fa-gem"></i>
+                                <span>Diamond Hands</span>
+                            </div>
+                            <div class="style-option" data-style="community">
+                                <i class="fas fa-users"></i>
+                                <span>Community Power</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3 class="control-title">Background Theme</h3>
+                        <div class="theme-grid">
+                            <div class="theme-option active" data-theme="dark">
+                                <div class="theme-preview dark"></div>
+                                <span>Dark Matrix</span>
+                            </div>
+                            <div class="theme-option" data-theme="gradient">
+                                <div class="theme-preview gradient"></div>
+                                <span>Cyber Gradient</span>
+                            </div>
+                            <div class="theme-option" data-theme="space">
+                                <div class="theme-preview space"></div>
+                                <span>Space</span>
+                            </div>
+                            <div class="theme-option" data-theme="neon">
+                                <div class="theme-preview neon"></div>
+                                <span>Neon</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3 class="control-title">Caption</h3>
+                        <div class="caption-input">
+                            <input type="text" id="captionInput" placeholder="Enter your caption (optional)">
+                            <button class="btn-caption-random" id="randomCaption">
+                                <i class="fas fa-dice"></i>
+                            </button>
+                        </div>
+                        <div class="caption-suggestions">
+                            <span class="suggestion" data-text="When CTO goes right">When CTO goes right</span>
+                            <span class="suggestion" data-text="No devs, just vibes">No devs, just vibes</span>
+                            <span class="suggestion" data-text="We are the team now">We are the team now</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-generate" id="generateBtn">
+                        <i class="fas fa-magic"></i> Generate $LATE Meme
+                    </button>
+                    
+                    <div class="generator-stats">
+                        <div class="stat">
+                            <i class="fas fa-bolt"></i>
+                            <span><span id="totalGenerated">1,234</span> memes generated</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-user"></i>
+                            <span><span id="userGenerated">0</span> by you</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="community-gallery">
+                <h3>Latest Community Creations</h3>
+                <div class="gallery-grid" id="communityGallery">
+                    <!-- Community memes will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Dashboard -->
+    <section class="section dashboard-section" id="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">LIVE DATA</span>
+                <h2 class="section-title">$LATE Dashboard</h2>
+                <p class="section-subtitle">
+                    Real-time data from the community takeover
+                </p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Market Overview</h3>
+                        <span class="live-badge">LIVE</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric">
+                            <span class="metric-label">Price</span>
+                            <span class="metric-value" id="priceValue">$0.041016</span>
+                            <span class="metric-change positive" id="priceChange">+0.00%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Market Cap</span>
+                            <span class="metric-value" id="marketCap">$10K</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">24h Volume</span>
+                            <span class="metric-value" id="volume24h">$8.5K</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Transactions</span>
+                            <span class="metric-value" id="transactions">275</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://dexscreener.com/solana/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank" class="link">
+                            View on DexScreener <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Contract Details</h3>
+                        <span class="verified-badge">VERIFIED</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="contract-address">
+                            <code id="contractAddress">6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump</code>
+                            <button class="btn-copy" id="copyContract">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="contract-links">
+                            <a href="https://solscan.io/token/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank">
+                                <i class="fas fa-search"></i> Solscan
+                            </a>
+                            <a href="https://www.pump.fun/coin/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank">
+                                <i class="fas fa-chart-bar"></i> Pump.fun
+                            </a>
+                            <a href="#" id="addToWallet">
+                                <i class="fas fa-wallet"></i> Add to Wallet
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tokenomics">
+                            <span class="tokenomic-item">0% Tax</span>
+                            <span class="tokenomic-item">100% Community</span>
+                            <span class="tokenomic-item">LP Burned</span>
+                            <span class="tokenomic-item">Audit: No Issues</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trading Activity Card -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Trading Activity</h3>
+                        <span class="live-badge">24H</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric">
+                            <span class="metric-label">Buy Orders</span>
+                            <span class="metric-value" id="buyOrders">162</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Sell Orders</span>
+                            <span class="metric-value" id="sellOrders">113</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Buy Volume</span>
+                            <span class="metric-value" id="buyVolume">$4.4K</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Sell Volume</span>
+                            <span class="metric-value" id="sellVolume">$4.0K</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tokenomics">
+                            <span class="tokenomic-item">Buyers: 77</span>
+                            <span class="tokenomic-item">Sellers: 57</span>
+                            <span class="tokenomic-item">Positive Flow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="section community-section" id="community">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">JOIN THE MOVEMENT</span>
+                <h2 class="section-title">The $LATE Community</h2>
+                <p class="section-subtitle">
+                    Connect with fellow holders and shape the future of $LATE
+                </p>
+            </div>
+            
+            <div class="community-grid">
+                <div class="community-card telegram-card">
+                    <div class="community-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram</h3>
+                    <p>Join our active Telegram community for real-time discussions, announcements, and memes.</p>
+                    <a href="https://t.me/communitylate" target="_blank" class="btn-community">
+                        <i class="fab fa-telegram"></i> Join @communitylate
+                    </a>
+                    <div class="community-stats">
+                        <span><i class="fas fa-users"></i> 1,200+ Members</span>
+                        <span><i class="fas fa-comments"></i> Active 24/7</span>
+                    </div>
+                </div>
+                
+                <div class="community-card twitter-card">
+                    <div class="community-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFFFF">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </div>
+                    <h3>Twitter / X</h3>
+                    <p>Follow us on Twitter/X for the latest updates, memes, and community announcements.</p>
+                    <a href="https://x.com/i/communities/2010224179992506678" target="_blank" class="btn-community">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF" style="margin-right: 8px;">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                        Follow @LATE_CTO
+                    </a>
+                    <div class="community-stats">
+                        <span><i class="fas fa-hashtag"></i> #LATECTO</span>
+                        <span><i class="fas fa-retweet"></i> Trending</span>
+                    </div>
+                </div>
+                
+                <div class="community-card meme-card">
+                    <div class="community-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Meme Gallery</h3>
+                    <p>Browse and share memes created by the community. Every meme features the LATE character.</p>
+                    <a href="#generator" class="btn-community">
+                        <i class="fas fa-plus"></i> Add Your Meme
+                    </a>
+                    <div class="community-stats">
+                        <span><i class="fas fa-image"></i> 7+ Base Images</span>
+                        <span><i class="fas fa-magic"></i> AI Generated</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meme-showcase">
+                <h3>Community Meme Gallery</h3>
+                <div class="showcase-grid">
+                    <div class="showcase-item">
+                        <img src="late1.jpg" alt="Community Meme 1" loading="lazy">
+                        <div class="showcase-overlay">
+                            <span>@CryptoLord</span>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="late2.jpg" alt="Community Meme 2" loading="lazy">
+                        <div class="showcase-overlay">
+                            <span>@MoonBoy</span>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="late3.jpg" alt="Community Meme 3" loading="lazy">
+                        <div class="showcase-overlay">
+                            <span>@DegenJane</span>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="late4.jpg" alt="Community Meme 4" loading="lazy">
+                        <div class="showcase-overlay">
+                            <span>@CTO_Queen</span>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="late5.jpg" alt="Community Meme 5" loading="lazy">
+                        <div class="showcase-overlay">
+                            <span>@SolanaKing</span>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="late6.jpg" alt="Community Meme 6" loading="lazy">
+                        <div class="showcase-overlay">
+                            <span>@Memelord</span>
+                        </div>
+                    </div>
+                    <div class="showcase-item">
+                        <img src="late7.jpg" alt="Community Meme 7" loading="lazy">
+                        <div class="showcase-overlay">
+                            <span>@LateToParty</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section (Updated Timeline) -->
+    <section class="section story-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">THE REBIRTH</span>
+                <h2 class="section-title">From Abandoned to Community-Owned</h2>
+            </div>
+            
+            <div class="story-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker abandoned"></div>
+                    <div class="timeline-content">
+                        <h3>The Beginning</h3>
+                        <p class="timeline-date">December 30 - 12 - 2025</p>
+                        <p>$LATE launched as a typical meme coin with promises of development and growth.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker left"></div>
+                    <div class="timeline-content">
+                        <h3>The Abandonment</h3>
+                        <p class="timeline-date">January 8 - 01 - 2026</p>
+                        <p>Developers disappeared, socials went silent, and the project was left for dead.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker takeover"></div>
+                    <div class="timeline-content">
+                        <h3>The Takeover</h3>
+                        <p class="timeline-date">January 10 - 01 - 2026</p>
+                        <p>The community united, took control of social media, and began the revival.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker current"></div>
+                    <div class="timeline-content">
+                        <h3>The Present</h3>
+                        <p class="timeline-date">Now</p>
+                        <p>100% community-owned. No team wallets. No central control. True decentralization.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cto-principles">
+                <div class="principle">
+                    <div class="principle-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h4>Community Governance</h4>
+                    <p>Every holder has a voice. Major decisions are made through community voting.</p>
+                </div>
+                
+                <div class="principle">
+                    <div class="principle-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Zero Team Allocation</h4>
+                    <p>No developer wallets. No hidden allocations. What you see is what you get.</p>
+                </div>
+                
+                <div class="principle">
+                    <div class="principle-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Transparent Growth</h4>
+                    <p>All liquidity is locked. Contract is renounced. Growth is organic and community-driven.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-container">
+                        <span class="logo-icon">⏰</span>
+                        <span class="logo-text">$LATE</span>
+                    </div>
+                    <p class="footer-tagline">Community Take Over<br>No Team, Just Vibes</p>
+                    <div class="social-links">
+                        <a href="https://t.me/communitylate" target="_blank" class="social-link">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://x.com/i/communities/2010224179992506678" target="_blank" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://dexscreener.com/solana/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank" class="social-link">
+                            <i class="fas fa-chart-line"></i>
+                        </a>
+                        <a href="#" class="social-link" id="copyLink">
+                            <i class="fas fa-copy"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#generator">Meme Generator</a>
+                    <a href="#dashboard">Dashboard</a>
+                    <a href="#community">Community</a>
+                    <a href="#about">Story</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="https://dexscreener.com/solana/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank">Live Chart</a>
+                    <a href="https://solscan.io/token/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank">Contract</a>
+                    <a href="https://www.pump.fun/coin/6sf6zf7UpkqPEz3byHpK5mvPUr9xBCf8FaXSuTUkpump" target="_blank">Buy $LATE</a>
+                    <a href="#" id="whitepaper">Whitepaper</a>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Get notified about community votes and major updates.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 $LATE Community. All rights belong to the community.</p>
+                <p class="disclaimer">
+                    $LATE is a community-owned meme token. This is not financial advice. 
+                    Crypto investments are high risk. Only invest what you can afford to lose.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
