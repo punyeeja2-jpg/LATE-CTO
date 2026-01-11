@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
             particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
+                number: { value: 50, density: { enable: true, value_area: 800 } },
                 color: { value: "#00D4FF" },
                 shape: { type: "circle" },
                 opacity: { value: 0.3, random: true },
@@ -43,16 +43,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (navToggle) {
         navToggle.addEventListener('click', function() {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navMenu.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                navMenu.style.display = 'flex';
+            } else {
+                navMenu.style.display = 'none';
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-container') && window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+                navMenu.style.display = 'none';
+            }
         });
         
         // Close menu on window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
                 navMenu.style.display = 'flex';
             } else {
+                navMenu.classList.remove('active');
                 navMenu.style.display = 'none';
             }
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    navMenu.style.display = 'none';
+                }
+            });
         });
     }
 
@@ -69,11 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
-                
-                // Close mobile menu if open
-                if (window.innerWidth <= 768) {
-                    navMenu.style.display = 'none';
-                }
             }
         });
     });
@@ -82,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    window.addEventListener('scroll', function() {
+    function updateActiveNav() {
         let current = '';
         const scrollPosition = window.scrollY + 100;
         
@@ -101,7 +121,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.add('active');
             }
         });
-    });
+    }
+    
+    window.addEventListener('scroll', updateActiveNav);
+    
+    // Initialize
+    updateActiveNav();
 
     // Meme Generator Logic
     const generateBtn = document.getElementById('generateBtn');
@@ -196,8 +221,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Create canvas for meme generation
             const canvas = document.createElement('canvas');
-            canvas.width = 600;
-            canvas.height = 400;
+            // Adjust size for mobile
+            const isMobile = window.innerWidth < 768;
+            canvas.width = isMobile ? 400 : 600;
+            canvas.height = isMobile ? 300 : 400;
             const ctx = canvas.getContext('2d');
             
             // Draw background
@@ -210,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Draw crypto pattern in background
             if (selectedTheme === 'space') {
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-                for (let i = 0; i < 50; i++) {
+                for (let i = 0; i < 30; i++) {
                     ctx.beginPath();
                     ctx.arc(
                         Math.random() * canvas.width,
@@ -227,7 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Draw caption
             ctx.fillStyle = '#FFFFFF';
-            ctx.font = 'bold 32px "Space Grotesk", sans-serif';
+            const fontSize = isMobile ? 24 : 32;
+            ctx.font = `bold ${fontSize}px "Space Grotesk", sans-serif`;
             ctx.textAlign = 'center';
             ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
             ctx.shadowBlur = 10;
@@ -249,25 +277,28 @@ document.addEventListener('DOMContentLoaded', function() {
             lines.push(currentLine);
             
             // Draw each line
+            const lineHeight = isMobile ? 30 : 40;
             lines.forEach((line, index) => {
-                const y = 50 + (index * 40);
+                const y = 40 + (index * lineHeight);
                 ctx.fillText(line, canvas.width / 2, y);
             });
             
             // Draw $LATE logo at bottom
-            ctx.font = 'bold 48px "Space Grotesk", sans-serif';
+            const logoFontSize = isMobile ? 32 : 48;
+            ctx.font = `bold ${logoFontSize}px "Space Grotesk", sans-serif`;
             ctx.fillStyle = '#00D4FF';
             ctx.shadowColor = 'rgba(0, 212, 255, 0.5)';
             ctx.shadowBlur = 20;
-            ctx.fillText('$LATE', canvas.width / 2, canvas.height - 50);
+            ctx.fillText('$LATE', canvas.width / 2, canvas.height - (isMobile ? 30 : 50));
             
             // Reset shadow
             ctx.shadowBlur = 0;
             
             // Add CTO badge
             ctx.fillStyle = '#00FF88';
-            ctx.font = 'bold 20px "Space Grotesk", sans-serif';
-            ctx.fillText('COMMUNITY TAKEOVER', canvas.width / 2, canvas.height - 20);
+            const badgeFontSize = isMobile ? 16 : 20;
+            ctx.font = `bold ${badgeFontSize}px "Space Grotesk", sans-serif`;
+            ctx.fillText('COMMUNITY TAKEOVER', canvas.width / 2, canvas.height - (isMobile ? 10 : 20));
             
             // Convert to data URL
             currentMeme = canvas.toDataURL('image/png');
@@ -291,46 +322,48 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show meme actions
             memeActions.style.display = 'flex';
             
-        }, 1500); // Simulate generation delay
+        }, 1000); // Simulate generation delay
     });
     
     // Draw LATE Character Function
     function drawLateCharacter(ctx, width, height) {
         const centerX = width / 2;
         const centerY = height / 2;
+        const isMobile = width < 500;
+        const scale = isMobile ? 0.8 : 1;
         
         // Draw character body (simplified)
         ctx.fillStyle = '#00D4FF';
         ctx.shadowColor = 'rgba(0, 212, 255, 0.5)';
-        ctx.shadowBlur = 20;
+        ctx.shadowBlur = 20 * scale;
         
         // Head
         ctx.beginPath();
-        ctx.arc(centerX, centerY - 60, 40, 0, Math.PI * 2);
+        ctx.arc(centerX, centerY - (60 * scale), 40 * scale, 0, Math.PI * 2);
         ctx.fill();
         
         // Body
-        ctx.fillRect(centerX - 30, centerY - 20, 60, 80);
+        ctx.fillRect(centerX - (30 * scale), centerY - (20 * scale), 60 * scale, 80 * scale);
         
         // Arms
-        ctx.fillRect(centerX - 70, centerY, 40, 15);
-        ctx.fillRect(centerX + 30, centerY, 40, 15);
+        ctx.fillRect(centerX - (70 * scale), centerY, 40 * scale, 15 * scale);
+        ctx.fillRect(centerX + (30 * scale), centerY, 40 * scale, 15 * scale);
         
         // Legs
-        ctx.fillRect(centerX - 25, centerY + 60, 20, 40);
-        ctx.fillRect(centerX + 5, centerY + 60, 20, 40);
+        ctx.fillRect(centerX - (25 * scale), centerY + (60 * scale), 20 * scale, 40 * scale);
+        ctx.fillRect(centerX + (5 * scale), centerY + (60 * scale), 20 * scale, 40 * scale);
         
         // Eyes
         ctx.fillStyle = '#0A0A0F';
         ctx.beginPath();
-        ctx.arc(centerX - 15, centerY - 70, 8, 0, Math.PI * 2);
-        ctx.arc(centerX + 15, centerY - 70, 8, 0, Math.PI * 2);
+        ctx.arc(centerX - (15 * scale), centerY - (70 * scale), 8 * scale, 0, Math.PI * 2);
+        ctx.arc(centerX + (15 * scale), centerY - (70 * scale), 8 * scale, 0, Math.PI * 2);
         ctx.fill();
         
         // Smile
         ctx.beginPath();
-        ctx.arc(centerX, centerY - 50, 15, 0.1 * Math.PI, 0.9 * Math.PI);
-        ctx.lineWidth = 3;
+        ctx.arc(centerX, centerY - (50 * scale), 15 * scale, 0.1 * Math.PI, 0.9 * Math.PI);
+        ctx.lineWidth = 3 * scale;
         ctx.strokeStyle = '#0A0A0F';
         ctx.stroke();
         
@@ -345,6 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.src = dataUrl;
         img.alt = 'Generated $LATE Meme';
         img.style.width = '100%';
+        img.style.height = 'auto';
         img.style.borderRadius = '10px';
         memePreview.appendChild(img);
     }
@@ -354,8 +388,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const gallery = document.getElementById('communityGallery');
         const galleryItems = gallery.querySelectorAll('.gallery-item');
         
-        // Keep only 12 items
-        if (galleryItems.length >= 12) {
+        // Keep only 8 items on mobile
+        const maxItems = window.innerWidth < 768 ? 8 : 12;
+        if (galleryItems.length >= maxItems) {
             gallery.removeChild(galleryItems[galleryItems.length - 1]);
         }
         
@@ -516,32 +551,35 @@ document.addEventListener('DOMContentLoaded', function() {
     function initializeCommunityGallery() {
         const gallery = document.getElementById('communityGallery');
         
-        // Create 6 placeholder community memes
-        for (let i = 0; i < 6; i++) {
+        // Create placeholder community memes
+        const numItems = window.innerWidth < 768 ? 4 : 6;
+        for (let i = 0; i < numItems; i++) {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             
             // Create simple placeholder image
             const canvas = document.createElement('canvas');
-            canvas.width = 150;
-            canvas.height = 150;
+            const isMobile = window.innerWidth < 768;
+            canvas.width = isMobile ? 150 : 150;
+            canvas.height = isMobile ? 120 : 150;
             const ctx = canvas.getContext('2d');
             
             // Simple gradient background
-            const gradient = ctx.createLinearGradient(0, 0, 150, 150);
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             gradient.addColorStop(0, '#0A0A0F');
             gradient.addColorStop(1, '#00D4FF');
             ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, 150, 150);
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             // Add $LATE text
             ctx.fillStyle = '#FFFFFF';
-            ctx.font = 'bold 20px "Space Grotesk"';
+            const fontSize = isMobile ? 16 : 20;
+            ctx.font = `bold ${fontSize}px "Space Grotesk"`;
             ctx.textAlign = 'center';
-            ctx.fillText('$LATE', 75, 75);
+            ctx.fillText('$LATE', canvas.width / 2, canvas.height / 2);
             
-            ctx.font = 'bold 12px "Space Grotesk"';
-            ctx.fillText('COMMUNITY', 75, 95);
+            ctx.font = `bold ${fontSize - 6}px "Space Grotesk"`;
+            ctx.fillText('COMMUNITY', canvas.width / 2, canvas.height / 2 + 20);
             
             const img = document.createElement('img');
             img.src = canvas.toDataURL();
@@ -584,13 +622,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Newsletter Form
     const newsletterForm = document.querySelector('.newsletter-form');
     
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.querySelector('input').value;
-        
-        if (email) {
-            alert('Thank you for subscribing to $LATE updates!');
-            this.querySelector('input').value = '';
-        }
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            
+            if (email) {
+                alert('Thank you for subscribing to $LATE updates!');
+                this.querySelector('input').value = '';
+            }
+        });
+    }
+    
+    // Handle window resize for responsive adjustments
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            // Reinitialize gallery on resize
+            const gallery = document.getElementById('communityGallery');
+            if (gallery) {
+                gallery.innerHTML = '';
+                initializeCommunityGallery();
+            }
+        }, 250);
     });
 });
